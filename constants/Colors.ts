@@ -18,7 +18,7 @@ export default {
   },
 };
 
-const colors = {
+export const colors = {
   lightGray: "#E2E6E6",
   gray: "#ABADAE",
   lightGreen: "#A3CAAF",

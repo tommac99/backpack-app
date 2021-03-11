@@ -2,42 +2,65 @@ import React, { FC } from "react";
 import { StyleSheet, Image } from "react-native";
 import { Text, View } from "../../components/Themed";
 import AppIntroSlider from "react-native-app-intro-slider";
+import LottieView from "lottie-react-native";
+import fruitSVG from "../../assets/svgs/fruit.json";
+import basketSVG from "../../assets/svgs/basket.json";
+import noSVG from "../../assets/svgs/backet.json";
 
 const slides = [
   {
     key: "one",
-    title: "Title 1",
-    text: "Description.\nSay something cool",
-    image: require("../../assets/images/splash.png"),
+    title: "Want lekker cheap food?",
+    svg: basketSVG,
     backgroundColor: "#59b2ab",
   },
   {
     key: "two",
-    title: "Title 2",
-    text: "Other cool stuff",
-    image: require("../../assets/images/splash.png"),
+    title: "Buy food before expiry date",
+    svg: basketSVG,
     backgroundColor: "#febe29",
   },
   {
     key: "three",
-    title: "Rocket guy",
-    text: "I'm already out of descriptions\n\nLorem ipsum bla bla bla",
-    image: require("../../assets/images/splash.png"),
+    title: "Pre-purchase, enjoy a bargain!",
+    svg: fruitSVG,
     backgroundColor: "#22bcb5",
   },
 ];
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
 type IntroSliderType = {
   setShowIntro: (showIntro: boolean) => void;
 };
 
+type Item = {
+  title: string;
+  text: string;
+  svg: any;
+  backgroundColor: string;
+};
+
+type ItemType = {
+  item: Item;
+};
+
 export const IntroSlider: FC<IntroSliderType> = ({ setShowIntro }) => {
-  const renderIntroSlider = ({ item }) => {
+  const renderIntroSlider = ({
+    item: { title, text, svg, backgroundColor },
+  }: ItemType) => {
     return (
       <View style={slideStyles.container}>
-        <Text style={slideStyles.title}>{item.title}</Text>
-        <Image style={slideStyles.image} source={item.image} />
-        <Text style={slideStyles.text}>{item.text}</Text>
+        <LottieView source={svg} autoPlay loop style={slideStyles.svg} />
+        <View style={slideStyles.textContainer}>
+          <Text style={slideStyles.title}>{title}</Text>
+        </View>
       </View>
     );
   };
@@ -55,20 +78,19 @@ const slideStyles = StyleSheet.create({
   container: {
     width: "100%",
     height: "100%",
-    backgroundColor: "hotpink",
-    flex: 1,
+    backgroundColor: "#A3CAAF",
     alignItems: "center",
-    justifyContent: "center",
+    overflow: "hidden",
+  },
+  textContainer: {
+    backgroundColor: "transparent",
   },
   title: {
-    fontSize: 20,
+    marginTop: 40,
+    fontSize: 24,
     fontWeight: "bold",
   },
-  image: {
-    width: 100,
-    height: 100,
-  },
-  text: {
-    fontSize: 16,
+  svg: {
+    width: 600,
   },
 });
