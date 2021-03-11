@@ -5,13 +5,9 @@ import * as React from "react";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
-import { HomeScreen } from "../screens/HomeScreen";
-import { BrowseScreen } from "../screens/BrowseScreen";
-import {
-  BottomTabParamList,
-  HomeScreenParamList,
-  BrowseScreenParamList,
-} from "../types";
+import { BottomTabParamList } from "../types";
+import { HomeScreenNavigator } from "./HomeScreenNavigator";
+import { ProfileScreenNavigator } from "./ProfileScreenNavigator";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -33,11 +29,11 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="BrowseScreen"
-        component={BrowseScreenNavigator}
+        name="ProfileScreen"
+        component={ProfileScreenNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <BrowseScreenIcon name="ios-code" color={color} />
+            <ProfileScreenIcon name="ios-code" color={color} />
           ),
         }}
       />
@@ -54,39 +50,9 @@ function HomeScreenIcon(props: {
   return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
-function BrowseScreenIcon(props: {
+function ProfileScreenIcon(props: {
   name: React.ComponentProps<typeof Ionicons>["name"];
   color: string;
 }) {
   return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
-}
-
-// Each tab has its own navigation stack, you can read more about this pattern here:
-// https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const HomeScreenStack = createStackNavigator<HomeScreenParamList>();
-
-function HomeScreenNavigator() {
-  return (
-    <HomeScreenStack.Navigator>
-      <HomeScreenStack.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        options={{ headerTitle: "Home" }}
-      />
-    </HomeScreenStack.Navigator>
-  );
-}
-
-const BrowseScreenStack = createStackNavigator<BrowseScreenParamList>();
-
-function BrowseScreenNavigator() {
-  return (
-    <BrowseScreenStack.Navigator>
-      <BrowseScreenStack.Screen
-        name="BrowseScreen"
-        component={BrowseScreen}
-        options={{ headerTitle: "Browse" }}
-      />
-    </BrowseScreenStack.Navigator>
-  );
 }

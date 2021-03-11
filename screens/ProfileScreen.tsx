@@ -1,15 +1,11 @@
-import { Button } from "native-base";
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
 import { Text, View } from "../components/Themed";
 
-export const HomeScreen = ({ navigation }: any) => {
+export const ProfileScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-      <Button onPress={() => navigation.navigate("BrowseScreen")}>
-        <Text>Browse</Text>
-      </Button>
+      <Text style={styles.title}>Profile</Text>
     </View>
   );
 };
@@ -19,12 +15,15 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#ffffff",
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
   },
-  text: {
-    fontSize: 16,
+  separator: {
+    marginVertical: 30,
+    height: 1,
+    width: "80%",
   },
 });

@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { Container, Content, StyleProvider, View } from "native-base";
+import { StyleProvider } from "native-base";
 import commonColor from "./native-base-theme/variables/commonColor";
 
 import useCachedResources from "./hooks/useCachedResources";

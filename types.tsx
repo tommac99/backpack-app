@@ -5,7 +5,7 @@ export type RootStackParamList = {
 
 export type BottomTabParamList = {
   HomeScreen: undefined;
-  BrowseScreen: undefined;
+  ProfileScreen: undefined;
 };
 
 export type HomeScreenParamList = {
@@ -14,4 +14,8 @@ export type HomeScreenParamList = {
 
 export type BrowseScreenParamList = {
   BrowseScreen: undefined;
+};
+
+export type ProfileScreenParamList = {
+  ProfileScreen: undefined;
 };

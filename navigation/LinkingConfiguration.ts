@@ -8,12 +8,13 @@ export default {
         screens: {
           Home: {
             screens: {
-              HomeScreen: "one",
+              HomeScreen: "Home",
+              BrowseScreen: "Browse",
             },
           },
-          Browse: {
+          Profile: {
             screens: {
-              BrowseScreen: "two",
+              ProfileScreen: "Profile",
             },
           },
         },
